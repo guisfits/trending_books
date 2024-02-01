@@ -1,9 +1,8 @@
 # Trends Books
 
-Search for books based on Google Trends on Brazil
+Search for books based on daily Google Trends of Brazil
 
 ## Dependencies
 
-- pip install pandas
 - pip install pytrends
 
