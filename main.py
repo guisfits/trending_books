@@ -1,9 +1,13 @@
-from pytrends.request import TrendReq
-import itertools
+from app.trends import get_trends
+from app.google_book_api import GoogleBookAPI
 
-tzBR='-180'
-pytrend = TrendReq(hl='en-US', tz=tzBR, timeout=(10,25))
+trends = get_trends()
+book_api = GoogleBookAPI()
 
-df = pytrend.trending_searches(pn='brazil')
-trends = list(itertools.chain.from_iterable(df.values.tolist()))
-print(trends)
+for trend in trends:
+    print(f'📚 Books related to {trend}')
+    result = book_api.search_books(trend)
+    if result["totalItems"] > 0:
+        for item in result['items']:
+            print(item['volumeInfo']['title'])
+
