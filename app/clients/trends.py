@@ -6,6 +6,7 @@ def get_trends():
     pytrend = TrendReq(hl='en-US', tz=tzBR, timeout=(10,25))
 
     df = pytrend.trending_searches(pn='brazil')
-    trends = list(itertools.chain.from_iterable(df.values.tolist()))
+    list_of_trends = df.values.tolist()
+    trends = list(itertools.chain.from_iterable(list_of_trends))
 
     return trends
