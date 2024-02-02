@@ -5,7 +5,7 @@ def get_database():
     mongodb_url = os.environ.get('MONGODB_URL')
 
     client = MongoClient(mongodb_url)
-    db = client.get_database('trends_books')
+    db = client.get_database('trending_books')
 
     collection_names = db.list_collection_names()
 
