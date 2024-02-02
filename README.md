@@ -23,7 +23,7 @@ Run `docker compose up`. When it's finished it'll print `✅ Done` on the logs
 
 ## Progress
 
-### trends_books 
+### trending_books
 **Guilherme**: 04/fev ✅
 - Connect with MongoDb
 - Save books
