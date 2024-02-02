@@ -2,6 +2,7 @@ from clients.google_book_api import GoogleBookAPI
 from clients.trends import get_trends
 from database.mongo_db import get_database
 
+import pytz
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -9,7 +10,8 @@ print("🚀 Starting the process..")
 
 load_dotenv()
 
-today = datetime.now().strftime('%Y%m%d')
+saopaulo_tz = pytz.timezone('America/Sao_Paulo')
+today = datetime.now(saopaulo_tz).strftime('%Y%m%d')
 daily_trend = {
     '_id': today,
     'trends': []
