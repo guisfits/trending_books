@@ -46,7 +46,8 @@ for trend in get_trends():
             'books': books_id
         })
 
-print("💾 Saving trends")
-trends_collection.insert_one(daily_trend)
+if trends_collection.find_one({'_id': today}) is None:
+    print("💾 Saving trends")
+    trends_collection.insert_one(daily_trend)
 
 print("✅ Done")
