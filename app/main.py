@@ -37,10 +37,6 @@ for trend in get_trends():
             book['_id'] = book_id
             del book['id']
 
-            existing_book = books_collection.find_one({'_id': book_id})
-            if existing_book is None:
-                books_collection.insert_one(book)
-
             books_collection.update_one({'_id': book_id}, {'$addToSet': {'trends': trend}}, upsert=True)
 
     if len(books_id) > 0:
