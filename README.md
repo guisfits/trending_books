@@ -1,12 +1,6 @@
-# Trends Books
+# Trending Books
 
 Search for books based on daily Google Trends of Brazil
-
-## Dependencies
-
-- pip install pytrends
-- pip install python-dotenv
-- pip install pymongo
 
 ## TO DO
 
