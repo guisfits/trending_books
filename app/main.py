@@ -36,8 +36,12 @@ for trend in get_trends():
             books_id.append(book_id)
             book['_id'] = book_id
             del book['id']
-
-            books_collection.update_one({'_id': book_id}, {'$addToSet': {'trends': trend}}, upsert=True)
+            
+            if books_collection.find_one({'_id': book_id}) is None:
+                book['trends'] = [trend]
+                books_collection.insert_one(book)
+            else:
+                books_collection.update_one({'_id': book_id}, {'$addToSet': {'trends': trend}})
 
     if len(books_id) > 0:
         daily_trend['trends'].append({
